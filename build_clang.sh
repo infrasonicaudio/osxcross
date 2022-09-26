@@ -46,7 +46,7 @@ function set_package_link()
   #links=$(cat $DOWNLOAD_PAGE | grep -Po '(?<=href=")[^"]*' | grep -v "\.sig")
   #rm -f $DOWNLOAD_PAGE
   LLVM_PKG="https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.1/llvm-12.0.1.src.tar.xz"
-  CLANG_PKG="https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.1/flang-12.0.1.src.tar.xz"
+  CLANG_PKG="https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.1/clang-12.0.1.src.tar.xz"
   #LLVM_PKG=$(echo "$links" | grep "llvm-$CLANG_VERSION.src" | head -n 1 || true)
   #CLANG_PKG=$(echo "$links" | grep -E "(clang|cfe)-$CLANG_VERSION.src" | head -n 1 || true)
   #if [ -n "$LLVM_PKG" ] && [[ $LLVM_PKG != https* ]]; then
