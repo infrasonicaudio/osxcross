@@ -35,22 +35,24 @@ function set_package_link()
 {
   pushd $BUILD_DIR &>/dev/null
 
-  DOWNLOAD_PAGE=llvmorg-$CLANG_VERSION
-  download https://github.com/llvm/llvm-project/releases/tag/$DOWNLOAD_PAGE &>/dev/null
+  #DOWNLOAD_PAGE=llvmorg-$CLANG_VERSION
+  #download https://github.com/llvm/llvm-project/releases/tag/$DOWNLOAD_PAGE &>/dev/null
 
-  if [[ $(file $DOWNLOAD_PAGE) == *gzip* ]]; then
-    mv $DOWNLOAD_PAGE $DOWNLOAD_PAGE.gz
-    require gzip
-    gzip -d $DOWNLOAD_PAGE.gz
-  fi
-  links=$(cat $DOWNLOAD_PAGE | grep -Po '(?<=href=")[^"]*' | grep -v "\.sig")
-  rm -f $DOWNLOAD_PAGE
-  LLVM_PKG=$(echo "$links" | grep "llvm-$CLANG_VERSION.src" | head -n 1 || true)
-  CLANG_PKG=$(echo "$links" | grep -E "(clang|cfe)-$CLANG_VERSION.src" | head -n 1 || true)
-  if [ -n "$LLVM_PKG" ] && [[ $LLVM_PKG != https* ]]; then
-    LLVM_PKG="https://github.com/$LLVM_PKG"
-    CLANG_PKG="https://github.com/$CLANG_PKG"
-  fi
+  #if [[ $(file $DOWNLOAD_PAGE) == *gzip* ]]; then
+  #  mv $DOWNLOAD_PAGE $DOWNLOAD_PAGE.gz
+  #  require gzip
+  #  gzip -d $DOWNLOAD_PAGE.gz
+  #fi
+  #links=$(cat $DOWNLOAD_PAGE | grep -Po '(?<=href=")[^"]*' | grep -v "\.sig")
+  #rm -f $DOWNLOAD_PAGE
+  LLVM_PKG="https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.1/llvm-12.0.1.src.tar.xz"
+  CLANG_PKG="https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.1/flang-12.0.1.src.tar.xz"
+  #LLVM_PKG=$(echo "$links" | grep "llvm-$CLANG_VERSION.src" | head -n 1 || true)
+  #CLANG_PKG=$(echo "$links" | grep -E "(clang|cfe)-$CLANG_VERSION.src" | head -n 1 || true)
+  #if [ -n "$LLVM_PKG" ] && [[ $LLVM_PKG != https* ]]; then
+  #  LLVM_PKG="https://github.com/$LLVM_PKG"
+  #  CLANG_PKG="https://github.com/$CLANG_PKG"
+  #fi
   popd &>/dev/null
 }
 
